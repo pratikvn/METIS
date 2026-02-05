@@ -3,9 +3,11 @@ include_directories(.)
 
 # Find sources.
 file(GLOB metis_sources *.c)
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 # Build libmetis.
 add_library(metis ${METIS_LIBRARY_TYPE} ${metis_sources})
+target_link_libraries(metis GKlib)
 
 if(METIS_INSTALL)
   install(TARGETS metis
